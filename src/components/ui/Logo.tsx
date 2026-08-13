@@ -18,7 +18,7 @@ export function Logo({ size = 120, showWordmark = false, variant = 'default', cl
   return (
     <div className={`flex items-center gap-2 ${className}`}>
       <img
-        src="https://res.cloudinary.com/gfiqfk7x/image/upload/v1786637171/ChatGPT_Image_Aug_13_2026_07_05_39_PM_swsdix.png"
+        src="https://res.cloudinary.com/gfiqfk7x/image/upload/v1786638225/ChatGPT_Image_Aug_13_2026_07_05_39_PM_xd3bfs.png"
         alt="OpenSky Connect Logo"
         width={size}
         height={size}
