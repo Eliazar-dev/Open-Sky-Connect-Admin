@@ -11,7 +11,7 @@ interface LogoProps {
 /**
  * OpenSky Connect brand mark using Cloudinary hosted image.
  */
-export function Logo({ size = 28, showWordmark = true, variant = 'default', className = '' }: LogoProps) {
+export function Logo({ size = 120, showWordmark = false, variant = 'default', className = '' }: LogoProps) {
   const inkColor = variant === 'light' ? 'text-white' : 'text-ink-900';
   const connectColor = variant === 'light' ? 'text-white/70' : 'text-slate-500';
 
