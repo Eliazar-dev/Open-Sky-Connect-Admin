@@ -15,73 +15,73 @@ import type {
 export const adminAuthService = {
   /**
    * Register a new admin account
-   * POST /users/api/register/
+   * POST /users/register/
    */
   async register(payload: AdminRegisterPayload): Promise<AdminRegisterResponse> {
-    const response = await adminApiClient.post<AdminRegisterResponse>('/users/api/register/', payload);
+    const response = await adminApiClient.post<AdminRegisterResponse>('/users/register/', payload);
     return response.data;
   },
 
   /**
    * Verify admin email with token
-   * POST /users/api/verify-email/
+   * POST /users/verify-email/
    */
   async verifyEmail(payload: AdminVerifyEmailPayload): Promise<AdminVerifyEmailResponse> {
-    const response = await adminApiClient.post<AdminVerifyEmailResponse>('/users/api/verify-email/', payload);
+    const response = await adminApiClient.post<AdminVerifyEmailResponse>('/users/verify-email/', payload);
     return response.data;
   },
 
   /**
    * Resend email verification token
-   * POST /users/api/resend-verification/
+   * POST /users/resend-verification/
    */
   async resendVerification(email: string): Promise<{ message: string }> {
-    const response = await adminApiClient.post<{ message: string }>('/users/api/resend-verification/', { email });
+    const response = await adminApiClient.post<{ message: string }>('/users/resend-verification/', { email });
     return response.data;
   },
 
   /**
    * Request login token (passwordless login)
-   * POST /users/api/login/
+   * POST /users/login/
    */
   async requestLoginToken(payload: AdminLoginRequestPayload): Promise<AdminLoginRequestResponse> {
-    const response = await adminApiClient.post<AdminLoginRequestResponse>('/users/api/login/', payload);
+    const response = await adminApiClient.post<AdminLoginRequestResponse>('/users/login/', payload);
     return response.data;
   },
 
   /**
    * Resend login token
-   * POST /users/api/resend-login-token/
+   * POST /users/resend-login-token/
    */
   async resendLoginToken(email: string): Promise<{ message: string }> {
-    const response = await adminApiClient.post<{ message: string }>('/users/api/resend-login-token/', { email });
+    const response = await adminApiClient.post<{ message: string }>('/users/resend-login-token/', { email });
     return response.data;
   },
 
   /**
    * Verify login token and get access tokens
-   * POST /users/api/verify-token/
+   * POST /users/verify-token/
    */
   async verifyLoginToken(payload: AdminVerifyTokenPayload): Promise<AdminVerifyTokenResponse> {
-    const response = await adminApiClient.post<AdminVerifyTokenResponse>('/users/api/verify-token/', payload);
+    const response = await adminApiClient.post<AdminVerifyTokenResponse>('/users/verify-token/', payload);
     return response.data;
   },
 
   /**
    * Request password reset
-   * POST /users/api/forgot-password/
+   * POST /users/forgot-password/
    */
   async forgotPassword(payload: AdminForgotPasswordPayload): Promise<{ message: string }> {
-    const response = await adminApiClient.post<{ message: string }>('/users/api/forgot-password/', payload);
+    const response = await adminApiClient.post<{ message: string }>('/users/forgot-password/', payload);
     return response.data;
   },
 
   /**
    * Reset password with token
-   * POST /users/api/reset-password/
+   * POST /users/reset-password/
    */
   async resetPassword(payload: AdminResetPasswordPayload): Promise<{ message: string }> {
-    const response = await adminApiClient.post<{ message: string }>('/users/api/reset-password/', payload);
+    const response = await adminApiClient.post<{ message: string }>('/users/reset-password/', payload);
     return response.data;
   },
 
