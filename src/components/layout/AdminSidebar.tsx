@@ -26,7 +26,7 @@ export function AdminSidebar() {
   return (
     <aside className="hidden w-60 flex-shrink-0 flex-col bg-ink-900 lg:flex">
       <div className="px-5 py-6">
-        <Logo size={26} variant="light" />
+        <Logo width={86} variant="light" />
       </div>
       <nav className="flex-1 space-y-1 px-3">
         {navItems.map((item) => {

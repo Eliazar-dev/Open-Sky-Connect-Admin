@@ -40,7 +40,7 @@ export function AdminMobileDrawer({ isOpen, onClose }: AdminMobileDrawerProps) {
             className="relative z-10 flex h-full w-64 flex-col bg-ink-900"
           >
             <div className="flex items-center justify-between px-5 py-6">
-              <Logo size={24} variant="light" />
+              <Logo width={80} variant="light" />
               <button onClick={onClose} className="text-white/60 hover:text-white" aria-label="Close menu">
                 <X className="h-5 w-5" />
               </button>
