@@ -1,8 +1,9 @@
 {
-  "name": "opensky-connect",
+  "name": "open-sky-connect-admin",
   "private": true,
   "version": "0.0.0",
   "type": "module",
+  "description": "Open Sky Connect Admin Portal - WiFi Hotspot Billing Admin Dashboard",
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",

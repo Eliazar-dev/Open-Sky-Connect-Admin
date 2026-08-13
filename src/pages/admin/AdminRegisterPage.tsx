@@ -67,7 +67,7 @@ export function AdminRegisterPage() {
     try {
       const response = await adminAuthService.verifyEmail({ email, token });
       toast.success(response.message);
-      navigate('/admin/login');
+      navigate('/login');
     } catch (error) {
       setServerError(error instanceof Error ? error.message : 'Invalid or expired code');
     }
@@ -159,7 +159,7 @@ export function AdminRegisterPage() {
                   Already have an account?{' '}
                   <button
                     type="button"
-                    onClick={() => navigate('/admin/login')}
+                    onClick={() => navigate('/login')}
                     className="text-brand-600 font-medium hover:underline"
                   >
                     Login

@@ -8,7 +8,6 @@ import { toast } from 'sonner';
 import { Button, Input, OtpInput } from '@/components/ui';
 import { adminAuthService } from '@/services/adminAuthService';
 import { useAdminAuthContext } from '@/contexts/AdminAuthContext';
-import { ADMIN_ROUTES } from '@/constants/routes';
 
 const emailSchema = z.object({
   email: z.string().email('Enter a valid email address'),
@@ -81,7 +80,7 @@ export function AdminLoginPage() {
       );
       
       toast.success('Welcome back!');
-      navigate(ADMIN_ROUTES.DASHBOARD);
+      navigate('/dashboard');
     } catch (error) {
       setServerError(error instanceof Error ? error.message : 'Invalid or expired code');
     }
@@ -144,7 +143,7 @@ export function AdminLoginPage() {
                   Don't have an account?{' '}
                   <button
                     type="button"
-                    onClick={() => navigate('/admin/register')}
+                    onClick={() => navigate('/register')}
                     className="text-brand-600 font-medium hover:underline"
                   >
                     Register

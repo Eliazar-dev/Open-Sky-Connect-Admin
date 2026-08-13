@@ -1,7 +1,6 @@
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { RouterProvider } from 'react-router-dom';
 import { Toaster } from 'sonner';
-import { AuthProvider } from '@/contexts/AuthContext';
 import { AdminAuthProvider } from '@/contexts/AdminAuthContext';
 import { OfflineBanner } from '@/components/ui';
 import { router } from '@/routes/router';
@@ -19,13 +18,11 @@ const queryClient = new QueryClient({
 function App() {
   return (
     <QueryClientProvider client={queryClient}>
-      <AuthProvider>
-        <AdminAuthProvider>
-          <OfflineBanner />
-          <RouterProvider router={router} />
-          <Toaster position="top-center" richColors closeButton />
-        </AdminAuthProvider>
-      </AuthProvider>
+      <AdminAuthProvider>
+        <OfflineBanner />
+        <RouterProvider router={router} />
+        <Toaster position="top-center" richColors closeButton />
+      </AdminAuthProvider>
     </QueryClientProvider>
   );
 }

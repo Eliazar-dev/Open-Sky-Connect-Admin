@@ -1,16 +1,13 @@
 import { lazy, Suspense } from 'react';
 import { Navigate, createBrowserRouter } from 'react-router-dom';
-import { AuthPage } from '@/pages/auth/AuthPage';
-import { DashboardPage } from '@/pages/customer/DashboardPage';
-import { BuyInternetPage } from '@/pages/customer/BuyInternetPage';
 import { AdminLoginPage } from '@/pages/admin/AdminLoginPage';
 import { AdminRegisterPage } from '@/pages/admin/AdminRegisterPage';
 import { AdminLayout } from '@/layouts/AdminLayout';
 import { ProtectedRoute } from '@/routes/ProtectedRoute';
 import { ErrorPage } from '@/components/ui';
-import { CUSTOMER_ROUTES, ADMIN_ROUTES } from '@/constants/routes';
+import { ADMIN_ROUTES } from '@/constants/routes';
 
-// Lazy load admin pages for code-splitting (customers never load these)
+// Lazy load admin pages for code-splitting
 const AdminDashboardPage = lazy(() => import('@/pages/admin/AdminDashboardPage').then(m => ({ default: m.AdminDashboardPage })));
 const AdminCustomersPage = lazy(() => import('@/pages/admin/AdminCustomersPage').then(m => ({ default: m.AdminCustomersPage })));
 const AdminPlansPage = lazy(() => import('@/pages/admin/AdminPlansPage').then(m => ({ default: m.AdminPlansPage })));
@@ -33,44 +30,21 @@ function AdminLoadingFallback() {
 
 export const router = createBrowserRouter([
   {
-    path: CUSTOMER_ROUTES.AUTH,
-    element: <AuthPage />,
-    errorElement: <ErrorPage />,
-  },
-  {
-    path: CUSTOMER_ROUTES.DASHBOARD,
-    element: (
-      <ProtectedRoute>
-        <DashboardPage />
-      </ProtectedRoute>
-    ),
-    errorElement: <ErrorPage />,
-  },
-  {
-    path: CUSTOMER_ROUTES.BUY_INTERNET,
-    element: (
-      <ProtectedRoute>
-        <BuyInternetPage />
-      </ProtectedRoute>
-    ),
-    errorElement: <ErrorPage />,
-  },
-  {
-    path: '/admin/login',
+    path: '/login',
     element: <AdminLoginPage />,
     errorElement: <ErrorPage />,
   },
   {
-    path: '/admin/register',
+    path: '/register',
     element: <AdminRegisterPage />,
     errorElement: <ErrorPage />,
   },
   {
-    path: ADMIN_ROUTES.ROOT,
+    path: '/',
     element: <AdminLayout />,
     errorElement: <ErrorPage />,
     children: [
-      { index: true, element: <Navigate to={ADMIN_ROUTES.DASHBOARD} replace /> },
+      { index: true, element: <Navigate to="/dashboard" replace /> },
       { path: 'dashboard', element: <Suspense fallback={<AdminLoadingFallback />}><AdminDashboardPage /></Suspense> },
       { path: 'customers', element: <Suspense fallback={<AdminLoadingFallback />}><AdminCustomersPage /></Suspense> },
       { path: 'plans', element: <Suspense fallback={<AdminLoadingFallback />}><AdminPlansPage /></Suspense> },
@@ -82,6 +56,6 @@ export const router = createBrowserRouter([
   },
   {
     path: '*',
-    element: <Navigate to={CUSTOMER_ROUTES.AUTH} replace />,
+    element: <Navigate to="/login" replace />,
   },
 ]);
