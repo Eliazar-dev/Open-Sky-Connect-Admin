@@ -1,16 +1,24 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Plus, Pencil } from 'lucide-react';
 import { Badge, Button, Table } from '@/components/ui';
 import { statusToVariant } from '@/components/ui/Badge';
 import type { Column } from '@/components/ui/Table';
-import { usePlans } from '@/hooks/usePlans';
+import { plansService } from '@/services/plansService';
 import { PlanFormModal } from '@/features/admin/PlanFormModal';
 import type { Plan } from '@/types';
 import { formatCurrency } from '@/utils/format';
 
 export function AdminPlansPage() {
-  const { data: plans, isLoading } = usePlans();
+  const [plans, setPlans] = useState<Plan[]>([]);
+  const [isLoading, setIsLoading] = useState(true);
   const [editingPlan, setEditingPlan] = useState<Plan | null | undefined>(undefined);
+
+  useEffect(() => {
+    plansService.getPlans().then(data => {
+      setPlans(data);
+      setIsLoading(false);
+    });
+  }, []);
 
   const columns: Column<Plan>[] = [
     { key: 'name', header: 'Plan Name', render: (p) => <span className="font-medium text-ink-900">{p.name}</span> },

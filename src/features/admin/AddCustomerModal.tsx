@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { toast } from 'sonner';
-import { Button, Input, Modal, PhoneInput } from '@/components/ui';
+import { Button, Input, Modal } from '@/components/ui';
 
 interface AddCustomerModalProps {
   isOpen: boolean;
@@ -24,7 +24,7 @@ export function AddCustomerModal({ isOpen, onClose }: AddCustomerModalProps) {
     <Modal isOpen={isOpen} onClose={onClose} title="Add Customer">
       <form onSubmit={handleSubmit} className="flex flex-col gap-4">
         <Input label="Full Name" placeholder="Jane Doe" required />
-        <PhoneInput label="Phone Number" required />
+        <Input label="Phone Number" placeholder="+254 7XX XXX XXX" required />
         <div className="flex gap-3 pt-1">
           <Button type="button" variant="outline" fullWidth onClick={onClose}>
             Cancel

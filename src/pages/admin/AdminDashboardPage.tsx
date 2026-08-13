@@ -1,6 +1,5 @@
 import { StatCard } from '@/components/ui/StatCard';
 import { StatCardSkeleton } from '@/components/ui';
-import { RevenueChart } from '@/components/charts/RevenueChart';
 import { useDashboardStats } from '@/hooks/useAdminData';
 import { formatCurrency } from '@/utils/format';
 
@@ -22,7 +21,12 @@ export function AdminDashboardPage() {
         )}
       </div>
 
-      {stats && <RevenueChart data={stats.revenueOverview} />}
+      {stats && (
+        <div className="bg-white rounded-xl border border-slate-200 p-6">
+          <h3 className="text-lg font-semibold text-slate-900 mb-4">Revenue Overview</h3>
+          <div className="text-sm text-slate-500">Chart component coming soon</div>
+        </div>
+      )}
     </div>
   );
 }
